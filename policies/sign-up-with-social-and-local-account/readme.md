@@ -3,9 +3,9 @@
 With Azure AD B2C a user can have multiple identities. Sign-in with local account, and link a social account to an existing local account. This Azure AD B2C sample demonstrates how to create a single account with social and local identities.
 
 This is scenario may help in case you provide the user the ability to sign-in with your organization account (such as ADFS, Azure AD, or Salcefoce account), but also want to allow users to continue sign-in with their local account after they leave the organization. For example, a user may not belong anymore to the organization, but he/she should still be able to access the application. With this demo, when user sign-in with Facebook account, you ask the user to provide and verify the email address and password. When B2C creates the account, the account is created with:
-- signInName, containing the email address for the local identity
-- password, for local identity
-- userIdentities with the social or enterprise id, for the social identity
+- **signInName** containing the email address for the local identity
+- **password** for local identity
+- **userIdentities** with the social or enterprise id, for the social identity
 - User profile, such as first name, last name, and display name
  
 Following is an example of such account:
