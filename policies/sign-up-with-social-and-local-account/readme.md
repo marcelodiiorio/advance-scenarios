@@ -39,8 +39,8 @@ Following is an example of such account:
 1. After you sign-in with your Facebook account. Type and verify your email address. Type your password and your profile, and click **Continue**
 1. Sign-out form your application, or open new browser in private mode (incognito)
 1. Open **B2C_1A_signup_signin** again, the relying party (RP) custom policy that you uploaded, and then select **Run now**.
-1. Sign-in with the local idintitty (email address) you specified
-1. You can aslo check the account you crated by using [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/).
+1. Sign-in with the local identity (email address) you specified
+1. You can also check the account you crated by using [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/).
 
 ## Disclaimer
 The migration application is developed and managed by the open-source community in GitHub. The application is not part of Azure AD B2C product and it's not supported under any Microsoft standard support program or service. 
