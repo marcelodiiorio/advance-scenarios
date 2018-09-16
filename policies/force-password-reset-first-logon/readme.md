@@ -72,7 +72,6 @@ Follow the demo comments in the extension policy. To merge the policy with yours
 1. You can also check the account you crated by using [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/). And make sure the **extension_00000000000000000000000000000000_mustResetPassword** is removed from the user profile
 
 ## Disclaimer
-The migration application is developed and managed by the open-source community in GitHub. The application is not part of Azure AD B2C product and it's not supported under any Microsoft standard support program or service. 
-This migration app is provided AS IS without warranty of any kind.
+The sample is developed and managed by the open-source community in GitHub. The application is not part of Azure AD B2C product and it's not supported under any Microsoft standard support program or service. The sample (Azure AD B2C policy and any companion code) is provided AS IS without warranty of any kind.
 
 > Note:  This sample policy is based on [SocialAndLocalAccounts starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts). All changes are marked with **Demo:** comment inside the policy XML files. Make the nessacery changes in the **Demo action required** sections.

@@ -90,7 +90,6 @@ Otherwise the `identityProviders` claim contains facebook.com and google.com.
 You can use this apporch to filter the identity providers based on IP range, input parameters you send to Azure AD B2C, localization. Some of the conditions can be done be using claims tranfomrtion. So, you don't need to develop any RESTfull services.
 
 ## Disclaimer
-This sample app is developed and maintained by the open-source community in GitHub. The application is not part of Azure AD B2C product and it's not supported under any Microsoft standard support program or service. 
-This sample app is provided AS IS without warranty of any kind.
+The sample is developed and managed by the open-source community in GitHub. The application is not part of Azure AD B2C product and it's not supported under any Microsoft standard support program or service. The sample (Azure AD B2C policy and any companion code) is provided AS IS without warranty of any kind.
 
 > Note:  This sample policy is based on [SocialAndLocalAccounts starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts). All changes are marked with **Demo:** comment inside the policy XML files. Make the nessacery changes in the **Demo action required** sections.
