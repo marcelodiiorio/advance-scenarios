@@ -16,4 +16,4 @@ Samples for several Azure AD B2C advance scenarios
 
 - [Username discovery](policies/username-discovery) - This example shows how to discover username by email address. It's useful when a user forgot the username and remember only the email address.
 
-- [Integrate REST API claims exchanges and input validation](policies/username-discovery) - A sample .Net core web API, demonstrate the use of [Restful technical profile](https://docs.microsoft.com/en-us/azure/active-directory-b2c/restful-technical-profile) in user journey's orchestration step and as a [validation technical profile](https://docs.microsoft.com/en-us/azure/active-directory-b2c/validation-technical-profile).
+- [Integrate REST API claims exchanges and input validation](policies/rest-api-integration) - A sample .Net core web API, demonstrate the use of [Restful technical profile](https://docs.microsoft.com/en-us/azure/active-directory-b2c/restful-technical-profile) in user journey's orchestration step and as a [validation technical profile](https://docs.microsoft.com/en-us/azure/active-directory-b2c/validation-technical-profile).
