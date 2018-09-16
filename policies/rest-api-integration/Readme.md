@@ -14,7 +14,7 @@ In the **SignUpOrSignIn** user journey step number 7, Azure AD B2C makes a call 
   "given_name": "Emily",
   "family_name": "Johnson",
   "loyaltyNumber": "1033-1282"
-
+}
 ``` 
 
 ## Validate user email during sign-up 
