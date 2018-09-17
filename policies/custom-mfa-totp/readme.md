@@ -49,11 +49,11 @@ After the REST API returns the registration information back to Azure AD B2C. Th
 ![QR code scanning](media/enroll.png)
 
 ### 2.3 Adding new identity account to Microsoft authenticator
-At this point, the user needs to download and install the authenticator app (Microsoft, Google or any other authenticator app such as Authy app). In Microsoft Authenticator, click add account, select the account type and scan the QR code provided by Azure AD B2C.
+At this point, the user needs to download and install the authenticator app (Microsoft, Google, or any other authenticator app such as Authy app). In Microsoft Authenticator, click add account, select the account type, and scan the QR code provided by Azure AD B2C.
 
-![Add account to Micorosft authenticator](media/add-account.png)
+![Add account to Microsoft authenticator](media/add-account.png)
 
-Back to Azure AD B2C, user needs to copy and type the passcode (wining the 30 seconds timeframe) in Azure AD B2C and click continue.
+Back to Azure AD B2C, user needs to copy and type the passcode (wining the 30-seconds timeframe) in Azure AD B2C and click continue.
 
 ### 2.4 TOTP code verification by Azure AD B2C
 When user clicks on **continue**, Azure AD B2C invokes the REST API VerifyTOTP endpoint. Sending the code provided by the end user, the user’s secret and the last time of the match (this data comes from the user’s Azure AD account). We use the last time of the match to prevent and verify the verification code has already been used. The REST API validates the code provided by the end user with the secret key and last match time.
