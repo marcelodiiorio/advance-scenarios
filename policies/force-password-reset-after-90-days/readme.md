@@ -5,11 +5,16 @@ This solution demonstrates how to force user to reset password after 90 day or s
 
 To merge the policy with yours, you need:
 1.	Add the claims in the extension policy
+
 1.	Add the claims transformations in the extension policy
+
 1. In the **ComparePasswordResetOnWithCurrentDateTime** claims transformation, change the value of the **timeSpanInSeconds** input parameter to the number of days in seconds you want the users to reset their password. For testing only the value is set to 80 seconds. Note: the value must be negative (starts with minus)
+
 1. In the **AAD-UserReadUsingObjectId** technical profile, add the output claim and output claims transformation.  This technical profile reads the extension_passwordResetOn attribute from the user account, checks if the claim is null and compares the value of the extension_passwordResetOn claim with current datetime. The result of this technical profile is the **skipPasswordReset** output claim (return in the last output claims transformation) that indicates whether password reset is required or not (based on date comparison and if extension_passwordResetOn is null) 
+
 1. In **AAD-UserWriteUsingLogonEmail** and **AAD-UserWritePasswordUsingObjectId** add the input claims transformation and perssis claims. These technical profiles, set the current datetime to the extension_passwordResetOn claim and persists the data do the user account.
-3.	Add the extra orchestration before the last orchestration step. This orchestration step asks the user to reset the password, saves the new password, and also sets the extension_passwordResetOn claim to current date and time. The orchestration setup will NOT run for social account and if the skipPasswordReset claim is true. 
+
+1.	Add the extra orchestration before the last orchestration step. This orchestration step asks the user to reset the password, saves the new password, and also sets the extension_passwordResetOn claim to current date and time. The orchestration setup will NOT run for social account and if the skipPasswordReset claim is true. 
 
 ## Tests
 You should run at least following acceptance tests:
