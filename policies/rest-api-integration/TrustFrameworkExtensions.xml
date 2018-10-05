@@ -98,22 +98,22 @@
     <TechnicalProfiles>
       <!--Demo: this technical profile returns the loyalty number --> 
 	    <TechnicalProfile Id="REST-GetLoyaltyNumber">
-	        <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
-	        <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-	        <Metadata>
+	      <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
+	      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+	      <Metadata>
 	        <Item Key="ServiceUrl">http://your-app.azurewebsites.net/api/identity/loyalty</Item>
 	        <Item Key="AuthenticationType">None</Item>
 	        <Item Key="SendClaimsIn">Body</Item>
-	        </Metadata>
-	        <InputClaims>
-            <!--Demo: optional claims to be sent to the REST API-->
-	          <InputClaim ClaimTypeReferenceId="userLanguage" PartnerClaimType="language" DefaultValue="{Culture:LCID}" />
-	          <InputClaim ClaimTypeReferenceId="objectId" />
-	        </InputClaims>
-	        <OutputClaims>
-	          <OutputClaim ClaimTypeReferenceId="loyaltyNumber" />
-	        </OutputClaims>
-	        <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+	      </Metadata>
+        <InputClaims>
+          <!--Demo: optional claims to be sent to the REST API-->
+          <InputClaim ClaimTypeReferenceId="userLanguage" PartnerClaimType="language" DefaultValue="{Culture:LCID}" />
+          <InputClaim ClaimTypeReferenceId="objectId" />
+        </InputClaims>
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="loyaltyNumber" />
+        </OutputClaims>
+        <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
 	    </TechnicalProfile>
 
       <!--Demo: this technical validates the email address, by calling the REST API that 
