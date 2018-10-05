@@ -2,7 +2,7 @@
 
 This solution demonstrates how to force user to reset password after 90 day or so. The solution is based on an extension attribute that stores the last time user sets the password and a comparison to the current date and time, minus specified number of days. Read here how to [configure extension attributes](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-create-custom-attributes-profile-edit-custom). When a user sign-up or resets the password, the policy sets the extension attributes to the current datetime. On sign-in the policy checks whether both the extension attribute is not null and whether the current date time, minus 90 day is greater than last time user sets the password or not. If greater, it means that at least 90 days passed from the time user reset the password.
 
-
+## Adding this functionality to your policy
 To merge the policy with yours, you need:
 1.	Add the claims in the extension policy
 
