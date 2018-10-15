@@ -21,3 +21,5 @@ Samples for several Azure AD B2C advance scenarios
 - [Integrate REST API claims exchanges and input validation](policies/rest-api-integration) - A sample .Net core web API, demonstrate the use of [Restful technical profile](https://docs.microsoft.com/en-us/azure/active-directory-b2c/restful-technical-profile) in user journey's orchestration step and as a [validation technical profile](https://docs.microsoft.com/en-us/azure/active-directory-b2c/validation-technical-profile).
 
 - [TOTP multi-factor authentication](policies/custom-mfa-totp) - Custom MFA solution, based on TOTP code. Allowing users to sign-in with Microsoft or Google authenticator apps.
+
+- [Remote profile](policies/remote-profile) - Demonstrates how to store and read user profile in a remote database. 
