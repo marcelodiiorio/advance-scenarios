@@ -16,7 +16,7 @@
 
 1. Copy the **app.js** file to your working folder
 
-1. To run your Node.js app using VS Code debugge, click on **Debug** and from the menu select **Add Configuration** and click **Run**
+1. To run your Node.js app using VS Code debugger, click on **Debug** and from the menu select **Add Configuration** and click **Run**
 
     ![Debug](media/debug.png)
 
