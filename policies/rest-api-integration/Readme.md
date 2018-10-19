@@ -29,8 +29,8 @@ The validation technical profile, simply checks if the email address provided by
 
 ## Source code
 Links to custom REST API source code for following platform: 
-- [.Net Core](/Source-Code/DotNet-Core)
-- [NodeJs Express](/Source-Code/NodeJs-Express)
+- [.Net Core](Source-Code/DotNet-Core)
+- [NodeJs Express](Source-Code/NodeJs-Express)
 
 ## Disclaimer
 The sample is developed and managed by the open-source community in GitHub. The application is not part of Azure AD B2C product and it's not supported under any Microsoft standard support program or service. The sample (Azure AD B2C policy and any companion code) is provided AS IS without warranty of any kind.
