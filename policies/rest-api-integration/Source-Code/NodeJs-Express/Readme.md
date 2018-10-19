@@ -38,6 +38,8 @@
     }
     ```
 
-     
+## Solution artifacts
+- **app.js** The REST API endpoint
+- **package.json** Lists the packages that the project depends on
 
 
