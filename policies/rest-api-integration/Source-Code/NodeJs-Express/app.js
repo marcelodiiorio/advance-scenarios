@@ -49,7 +49,7 @@ app.post('/api/identity/validate', function (req, res) {
         return;
     }
 
-    // Return the loaylty number and email in lower case
+    // Return the loyalty number and email in lower case
     res.json({
         loyaltyNumber: req.body.language + "-" + (Math.floor(Math.random() * 9999) + 1000),
         email: req.body.email.toLowerCase()
