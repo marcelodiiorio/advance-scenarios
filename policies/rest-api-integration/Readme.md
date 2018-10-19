@@ -9,18 +9,15 @@ In the **SignUpOrSignIn** user journey step number 7, Azure AD B2C makes a call 
 
 ```JSON
 {
-   ... 
-  "name": "Emily Johnson",
-  "given_name": "Emily",
-  "family_name": "Johnson",
-  "loyaltyNumber": "1033-1282"
+    "loyaltyNumber": "1033-1282",
+    "email": "someone@contoso.com"
 }
 ``` 
 
 ## Validate user email during sign-up 
 The **LocalAccountSignUpWithLogonEmail** is configured to add the **REST-ValidateEmail** validation technical profile (before the AAD-UserWriteUsingLogonEmail). Make sure to keep this order, because you want to: first validate the user input, then create the account in the directory.
 
-The validation technical profile, simply checks if the email address provided by the user, starts with 'test'. If yes, the REST API returns the error, preventing the user from creating the account. Otherwise the REST API return the email in lower case. 
+The validation technical profile, simply checks if the email address provided by the user, starts with 'test'. If yes, the REST API returns the error, preventing the user from creating the account. Otherwise the REST API return the email in lower case and the loyalty number. 
 
 ## Test the policy by using Run Now
 1. From Azure Portal select **Azure AD B2C Settings**, and then select **Identity Experience Framework**.
@@ -28,8 +25,12 @@ The validation technical profile, simply checks if the email address provided by
 1. Sign-in with any account
 1. Check the return JTW token contains the **loyaltyNumber** claim
 1. Run the policy again, this time click on *Don't have an account?Sign up now* link
-1. In the email address, type any email that starts with 'test'. Note: the email verification is desabled, so you can type any email address. Azure AD B2C will not validate the eamil address, unless you remove the **EnforceEmailVerification** metatdata from the **LocalAccountSignUpWithLogonEmail** technical profile.
+1. In the email address, type any email that starts with 'test'. Note: the email verification is disabled, so you can type any email address. Azure AD B2C will not validate the email address, unless you remove the **EnforceEmailVerification** metadata from the **LocalAccountSignUpWithLogonEmail** technical profile.
 
+## Source code
+Links to custom REST API source code for following platform: 
+- [.Net Core](/Source-Code/DotNet-Core)
+- [NodeJs Express](/Source-Code/NodeJs-Express)
 
 ## Disclaimer
 The sample is developed and managed by the open-source community in GitHub. The application is not part of Azure AD B2C product and it's not supported under any Microsoft standard support program or service. The sample (Azure AD B2C policy and any companion code) is provided AS IS without warranty of any kind.

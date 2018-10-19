@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace ADB2C.RestAPI
+namespace AADB2C.WebAPI
 {
     public class Startup
     {

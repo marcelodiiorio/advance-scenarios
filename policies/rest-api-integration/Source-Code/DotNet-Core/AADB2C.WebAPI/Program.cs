@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace ADB2C.RestAPI
+namespace AADB2C.WebAPI
 {
     public class Program
     {

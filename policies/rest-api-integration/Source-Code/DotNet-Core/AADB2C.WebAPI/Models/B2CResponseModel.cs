@@ -5,7 +5,7 @@ using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace ADB2C.RestAPI.Models
+namespace AADB2C.WebAPI.Models
 {
     public class B2CResponseModel
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ADB2C.RestAPI.Models
+namespace AADB2C.WebAPI.Models
 {
     public class InputClaimsModel
     {

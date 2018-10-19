@@ -6,12 +6,12 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-using ADB2C.RestAPI.Models;
+using AADB2C.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace ADB2C.RestAPI.Controllers
+namespace AADB2C.WebAPI.Controllers
 {
     [Route("api/[controller]/[action]")]
     public class IdentityController : Controller
@@ -44,6 +44,12 @@ namespace ADB2C.RestAPI.Controllers
                 return StatusCode((int)HttpStatusCode.Conflict, new B2CResponseModel("Request content is empty", HttpStatusCode.Conflict));
             }
 
+            // Check input content value
+            if (string.IsNullOrEmpty(input))
+            {
+                return StatusCode((int)HttpStatusCode.Conflict, new B2CResponseModel("Request content is empty", HttpStatusCode.Conflict));
+            }
+
             // Convert the input string into InputClaimsModel object
             InputClaimsModel inputClaims = InputClaimsModel.Parse(input);
 
@@ -52,6 +58,17 @@ namespace ADB2C.RestAPI.Controllers
                 return StatusCode((int)HttpStatusCode.Conflict, new B2CResponseModel("Can not deserialize input claims", HttpStatusCode.Conflict));
             }
 
+            //Check if the language parameter is presented
+            if (string.IsNullOrEmpty(inputClaims.language))
+            {
+                return StatusCode((int)HttpStatusCode.Conflict, new B2CResponseModel("Language code is null or empty", HttpStatusCode.Conflict));
+            }
+
+            //Check if the objectId parameter is presented
+            if (string.IsNullOrEmpty(inputClaims.objectId))
+            {
+                return StatusCode((int)HttpStatusCode.Conflict, new B2CResponseModel("User object Id is null or empty", HttpStatusCode.Conflict));
+            }
 
             try
             {
@@ -97,9 +114,16 @@ namespace ADB2C.RestAPI.Controllers
                 return StatusCode((int)HttpStatusCode.Conflict, new B2CResponseModel("Can not deserialize input claims", HttpStatusCode.Conflict));
             }
 
+            //Check if the language parameter is presented
+            if (string.IsNullOrEmpty(inputClaims.language))
+            {
+                return StatusCode((int)HttpStatusCode.Conflict, new B2CResponseModel("Language code is null or empty", HttpStatusCode.Conflict));
+            }
+
+            //Check if the email parameter is presented
             if (string.IsNullOrEmpty(inputClaims.email))
             {
-                return StatusCode((int)HttpStatusCode.Conflict, new B2CResponseModel("email can't be NULL or empty", HttpStatusCode.Conflict));
+                return StatusCode((int)HttpStatusCode.Conflict, new B2CResponseModel("Email is null or empty", HttpStatusCode.Conflict));
             }
 
             // Validate the email address 
@@ -112,6 +136,7 @@ namespace ADB2C.RestAPI.Controllers
             {
                 // Return the email in lower case format
                 return StatusCode((int)HttpStatusCode.OK, new B2CResponseModel(string.Empty, HttpStatusCode.OK) {
+                    loyaltyNumber = inputClaims.language + "-" + rnd.Next(1000, 9999).ToString(),
                     email = inputClaims.email.ToLower()
                 });
             }
