@@ -31,7 +31,7 @@ The validation technical profile, simply checks if the email address provided by
 Links to custom REST API source code for following platform: 
 
 
-<table border="0">
+<table border="0" style="border:none;">
     <tr>
         <td><a href="https://github.com/yoelhor/aadb2c-advance-scenarios/blob/master/policies/rest-api-integration/Source-Code/DotNet-Core" ><img src="https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg" height="48px" width="48px" alt=".Net Core" ><br /><span>.Net Core</span></a></div></td>
         <td style="padding-left:20px"><a href="https://github.com/yoelhor/aadb2c-advance-scenarios/blob/master/policies/rest-api-integration/Source-Code/NodeJs-Express" ><img src="https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg" height="48px" width="48px" alt="Node.js" ><br /?<span>Node.js</span></a></div></td>
