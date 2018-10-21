@@ -30,9 +30,6 @@ The validation technical profile, simply checks if the email address provided by
 ## Source code
 Links to custom REST API source code for following platform: 
 
-<style>
-    #td{border: none;}
-<style>
 <table border="0" style="border:none;">
     <tr style="border: none;">
         <td style="padding-left:0; border: none;"><a href="https://github.com/yoelhor/aadb2c-advance-scenarios/blob/master/policies/rest-api-integration/Source-Code/DotNet-Core" ><img src="https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg" height="48px" width="48px" alt=".Net Core" ><br /><span>.Net Core</span></a></div></td>
