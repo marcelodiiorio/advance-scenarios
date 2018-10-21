@@ -7,6 +7,10 @@ const appVersion = '1.0.0'
 // parse application/json
 app.use(bodyParser.json())
 
+
+// Welcome message
+app.get('/', (req, res) => res.send('Welcome to Azure AD B2C custom REST API'))
+
 app.post('/api/identity/loyalty', function (req, res) {
 
     //Check if the language parameter is provided
