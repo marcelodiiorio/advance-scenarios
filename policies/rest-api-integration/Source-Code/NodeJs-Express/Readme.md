@@ -20,26 +20,28 @@
 
     ![Debug](media/debug.png)
 
-1. Run following POST request to your endpoint:
+1. Before you deploy your solution and use it with Azure AD B2C, try to make a direct call to your REST API endpoint, using api client tool such as [Postman](https://www.getpostman.com/)
+    - Run following POST request to your endpoint. This call should return a JSON with a random loyalty number.
 
-    ```
+    ```HTTP
     POST http://localhost:3000/api/identity/loyalty
     {
-    	"language": "1033",
-    	"objectId": "0f8fad5b-d9cb-469f-a165-70867728950e",
+        "language": "1033",
+        "objectId": "0f8fad5b-d9cb-469f-a165-70867728950e",
     }
     ```
+    - Run following POST request to your endpoint. This call will throw 409 HTTP error message. Change the email from `TEST@contoso.com` to `someone@contoso.com`. Now, the REST API will return a random loyalty number and the email address in lower case.
         
-    ```
+    ```HTTP
     POST http://localhost:3000/api/identity/validate
     {
-    	"language": "1033",
-    	"email": "test@contoso.com"
+        "language": "1033",
+        "email": "TEST@contoso.com"
     }
     ```
-
+    
 ## Solution artifacts
-- **app.js** The REST API endpoint
-- **package.json** Lists the packages that the project depends on
+- [app.js](app.js) The REST API endpoint
+- [package.json](package.json) Lists the packages that the project depends on
 
 
