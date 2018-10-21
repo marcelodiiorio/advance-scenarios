@@ -30,10 +30,16 @@ The validation technical profile, simply checks if the email address provided by
 ## Source code
 Links to custom REST API source code for following platform: 
 
-- [.Net Core](Source-Code/DotNet-Core)
-- [NodeJs Express](Source-Code/NodeJs-Express)
-- [Java Spring](Source-Code/Java-Spring)
-- [Python Flask](Source-Code/Python-Flask)
+
+<table>
+    <tr>
+        <td><a href="https://github.com/yoelhor/aadb2c-advance-scenarios/blob/master/policies/rest-api-integration/Source-Code/DotNet-Core" ><img src="https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg" height="48px" width="48px" alt=".Net Core" ><br /><span>.Net Core</span></a></div></td>
+        <td style="padding-left:20px"><a href="https://github.com/yoelhor/aadb2c-advance-scenarios/blob/master/policies/rest-api-integration/Source-Code/NodeJs-Express" ><img src="https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg" height="48px" width="48px" alt="Node.js" ><br /?<span>Node.js</span></a></div></td>
+        <td style="padding-left:20px"><a href="https://github.com/yoelhor/aadb2c-advance-scenarios/blob/master/policies/rest-api-integration/Source-Code/Java-Spring" ><img src="https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg" height="48px" width="48px" alt="Java" ><br /><span>Java</span></a></div></td>
+        <td style="padding-left:20px"><a href="https://github.com/yoelhor/aadb2c-advance-scenarios/blob/master/policies/rest-api-integration/Source-Code/Python-Flask" ><img src="https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg" height="48px" width="48px" alt="Python (on Linux)" ><br /><span>Python (on Linux)</span></a></div></td>
+    </tr>
+</table>
+
 
 ## Disclaimer
 The sample is developed and managed by the open-source community in GitHub. The application is not part of Azure AD B2C product and it's not supported under any Microsoft standard support program or service. The sample (Azure AD B2C policy and any companion code) is provided AS IS without warranty of any kind.
