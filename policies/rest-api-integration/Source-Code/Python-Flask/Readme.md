@@ -173,7 +173,7 @@ git commit -m "My first verstion"
 1. Repeat on the step #3. This time use your Azure App Service URL.
 
 ## Solution artifacts
-- **application.py** The REST API endpoint
-- **requirements.txt** Containing a list of libraries to be installed using pip install 
+- [application.py](application.py) The REST API endpoint
+- [requirements.txt](requirements.txt) Containing a list of libraries to be installed using pip install 
 
 
