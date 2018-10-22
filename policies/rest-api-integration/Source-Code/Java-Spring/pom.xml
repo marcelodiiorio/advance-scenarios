@@ -60,10 +60,9 @@
 					</appSettings>
 
 					<!-- Web App information -->
-					<!-- Web App information -->
-					<resourceGroup>B2C-Java-Test</resourceGroup>
-					<appName>yoeltest14</appName>
-					<region>westus2</region>
+					<resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+					<appName>${WEBAPP_NAME}</appName>
+					<region>${REGION}</region>
 
 					<!-- Java Runtime Stack for Web App on Linux-->
 					<linuxRuntime>jre8</linuxRuntime>
