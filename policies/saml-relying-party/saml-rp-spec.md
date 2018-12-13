@@ -36,7 +36,7 @@ A self-signed certificate is fine for most scenarios. For production environment
 
 Follwing diagram depicts the metadata and certificate exchange
 
-![metadata and certificate exchange](media/custom-policy/aadb2c-ief-schema-technical-profile-rp-saml-metadata.png)
+![metadata and certificate exchange](media/aadb2c-ief-schema-technical-profile-rp-saml-metadata.png)
 
 ## Digital singing
 
@@ -71,7 +71,7 @@ To encrypt the SAML response assertion, you need to:
 
 Following is an example of a relying party application's metadata encryption section of the metadata.
 
-![encryption section](media/custom-policy/aadb2c-ief-schema-technical-profile-idp-saml-encryption.png) 
+![encryption section](media/aadb2c-ief-schema-technical-profile-idp-saml-encryption.png) 
 
 ### Encryption metadata
 To encrypt a SAML response (assertion section) send to relying party application, Azure AD B2C:
