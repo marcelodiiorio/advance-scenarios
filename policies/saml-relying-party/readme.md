@@ -34,7 +34,7 @@ To build a trust between your relying party application and Azure AD B2C, you ne
 
 2. Certificate with private key provided to Azure AD B2C. This is used to sign and/or encrypt the SAML Response that Azure AD B2C provides back to the SAML Relying Party.
 
-### 2.1 Preparing self-signed certificate
+### 1.1 Preparing self-signed certificate
 If you don’t have a certificate already, you can create a self-signed certificate [using
 makecert](http://www.virtues.it/2015/08/howto-create-selfsigned-certificates-with-makecert/)
 
@@ -54,7 +54,7 @@ makecert](http://www.virtues.it/2015/08/howto-create-selfsigned-certificates-wit
 
 6. Provide a password for the certificate
 
-### 2.2 Upload the certificate
+### 1.2 Upload the certificate
 
 Whether you have a valid certificate issued by certificate authority, or a self-signed certificate, you need to upload the certificate to the Azure AD B2C Policy Keys area. To do so:
 
