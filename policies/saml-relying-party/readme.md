@@ -4,7 +4,7 @@ This document will walk you through adding a SAML-based Relying party
 to Azure AD B2C.
 
 ## Important note
-**Relying Party support is available as a preview feature.** Support is not available for the general public on this functionality as it has only been tested on some specific modalities. The implementation may be changed in the future without notifying you. Customers should NOT use preview in production environment.
+**SAML Relying Party support is available as a preview feature.** Support is not available for the general public on this functionality as it has only been tested on some specific modalities. The implementation may be changed in the future without notifying you. Customers should NOT use preview features in a production environment.
 
 
 **If you are interested in this feature, make sure to [vote for it](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334323-saml-protocol-support) in order to support it and get updates on its progress.**
@@ -28,30 +28,35 @@ Walkthrough
 
 
 ## 1. Setup the certificates
-To build a trust between your relying party application and Azure AD B2C, you need to provide valid X509 certificates (with the private key). One certificate with the private key (.pfx file) you store only on your web application. Your relying party application digitally signs the SAML sign-In request using that certificate you provide. Another certificate with the private key (.pfx file) you store only on Azure AD B2C policy keys. Azure AD B2C digitally signs (or also encrypt) the SAML response using that certificate you provide. This article describes how to manage the Azure AD B2C certificate.
+To build a trust between your relying party application and Azure AD B2C, you need to provide valid X509 certificates (with the private key). 
+
+1. Certificate with private key stored on the Web App. This is used to sign the SAML Request sent to Azure AD B2C.
+
+2. Certificate with private key provided to Azure AD B2C. This is used to sign and/or encrypt the SAML Response that Azure AD B2C provides back to the SAML Relying Party.
 
 ### 2.1 Preparing self-signed certificate
-If you don’t have a cert already, you can create a self-sing cert [using
+If you don’t have a certificate already, you can create a self-signed certificate [using
 makecert](http://www.virtues.it/2015/08/howto-create-selfsigned-certificates-with-makecert/)
 
-1.  makecert -r -pe -n
-    "CN=yourappname.yourtenant.onmicrosoft.com" -a sha256 -sky
-    signature -len 2048 -e 12/21/2018 -sr CurrentUser -ss My
-    YourAppNameSamlCert.cer
+1. Run this command to generate a self signed certificate:
 
-2. Go to cert store “Manage User Certificates” &gt; Current
+       makecert -r -pe -n "CN=yourappname.yourtenant.onmicrosoft.com" -a sha256 -sky signature -len 2048 -e 12/21/2018 -sr CurrentUser -ss My YourAppNameSamlCert.cer
+
+2. Go to the certificate store > Manage User Certificates &gt; Current
     User &gt; Personal &gt; Certificates &gt;
     yourappname.yourtenant.onmicrosoft.com
 
-3. Right click &gt; All Tasks &gt; Export
+3. Right click the certificate &gt; All Tasks &gt; Export
 
-4. Yes, export the private key
+4. Select Yes, export the private key
 
-5.  Defaults (PFX and first checkbox)
+5. Select the defaults for Export File Format
+
+6. Provide a password for the certificate
 
 ### 2.2 Upload the certificate
 
-Whether you have a valid certificate issued by certificate authority, or self-sign certificate, you need to upload the cert to Azure AD B2C policy keys. To do so:
+Whether you have a valid certificate issued by certificate authority, or a self-signed certificate, you need to upload the certificate to the Azure AD B2C Policy Keys area. To do so:
 
 1. Go to your Azure AD B2C tenant. Click **Settings > Identity Experience Framework > Policy Keys**.
 
@@ -70,13 +75,13 @@ Whether you have a valid certificate issued by certificate authority, or self-si
 ## 2. Prepare your policy
 ### 2.1 Create the SAML Token Issuer
 
-Now that you’ve got working set of advanced policies, let’s go ahead and
+Now let’s go ahead and
 add the capability for your tenant to issue SAML tokens.
 
 > ***Note**: The [SAML RP Reference document](saml-rp-spec.md) contains more details around each of the XML elements referenced in
 > this section.*
 
-Open the **TrustFrameworkExtensions.xml** policy from your working directory. Locate the section with the &lt;ClaimsProviders&gt; and add the following XMAL snippet.
+Open the **TrustFrameworkExtensions.xml** policy from your working directory. Locate the section with the &lt;ClaimsProviders&gt; and add the following XML snippet.
 
 ```xml
 <ClaimsProvider>
@@ -92,9 +97,9 @@ Open the **TrustFrameworkExtensions.xml** policy from your working directory. Lo
         <Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name</Item>
       </Metadata>
       <CryptographicKeys>
-        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlRpCert" />
-        <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SamlRpCert" />
-        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlRpCert" />
+        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_YourAppNameSamlCert" />
+        <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_YourAppNameSamlCert" />
+        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_YourAppNameSamlCert" />
       </CryptographicKeys>
       <InputClaims/>
       <OutputClaims/>
@@ -110,24 +115,21 @@ Open the **TrustFrameworkExtensions.xml** policy from your working directory. Lo
 </ClaimsProvider>
 ```
 
-The issuer should the same one as configured in the relaying party application. Set the value of the **IssuerUri** metadata. Replace the  **tenant-name** with to your tenant, and **policy-name** with to your relying party policy name. For example:
-```
-https://contoso.b2clogin.com/contoso.onmicrosoft.com/B2C_1A_SAML2_signup_signin
-```
+* IssuerUri – This is the Issuer Uri that will be returned in the SAML Response from Azure AD B2C. Your relying party will be configured to accept an Issuer URI during SAML Assertion validation. This Issuer URI must be provided in the above XML snippet.
 
 ### 2.2 Setup the user journey
 
-At this point, the SAML issuer has been set up, but it’s not available in any of the user journeys. To make it available, you create a duplicate of an existing template user journey, and then modify it so that it issues an SAML toke instead of JWT.
+At this point, the SAML issuer has been set up, but it’s not available in any of the user journeys. To make it available, you create a duplicate of an existing templated user journey, and then modify it so that it issues an SAML token instead of JWT.
 
 1. Open the *TrustFrameworkBase.xml* file from the starter pack.
 1. Find and copy the entire contents of the **UserJourney** element that includes `Id="SignUpOrSignIn"`.
 1. Open the *TrustFrameworkExtensions.xml* and find the **UserJourneys** element. If the element doesn't exist, add one.
 1. Paste the entire content of the **UserJourney** element that you copied as a child of the **UserJourneys** element.
 1. Rename the ID of the user journey from `SignUpOrSignIn` to `SignUpSignInSAML`.
-1. In the last orchestration step, change the value of `CpimIssuerTechnicalProfileReferenceId` property, from `JwtIssuer` to `Saml2AssertionIssuer` 
+1. In the last orchestration step, change the value of `CpimIssuerTechnicalProfileReferenceId` property, from `JwtIssuer` to `Saml2AssertionIssuer`.
 
 
-Save your changes and upload updated policy. This time, make sure you check the *Overwrite the policy if it exists* checkbox. At this point, this will not have any effect, the intent of uploading is confirming that what you’ve added thus far doesn’t have any issues.
+Save your changes and upload the updated policy. This time, make sure you check the *Overwrite the policy if it exists* checkbox. At this point, this will not have any effect, the intent of uploading is to confirm that what you’ve added thus far doesn’t have any syntactical issues.
 
 ## 3. Add the SAML Relaying Party policy
 
@@ -162,17 +164,17 @@ Now that your tenant can issue SAML tokens, we need to create the SAML relying p
 ```
 
 ### 3.2 Update the metadata
-The metadata can be configured (in both parties) as "Static Metadata", or "Dynamic Metadata". In static mode, you copy the entire metadata from one party and set it in the other party. In dynamic mode, you set the URL to the metadata, while the other party reads the configuration dynamically. The principle is the same, you set Azure B2C policy's metadata in your service provider (relying party). And set your service provider's metadata in Azure AD B2C.
+The metadata can be configured (in both parties) as "Static Metadata", or "Dynamic Metadata". In static mode, you copy the entire metadata from one party and set it in the other party. In dynamic mode, you set the URL to the metadata, while the other party reads the configuration dynamically. The principle is the same, you provide the Azure B2C policy's metadata in your service provider (relying party). And provide your service provider's metadata to Azure AD B2C.
 
-Each SAML relying party application has different steps to set and read the identity provider metadata. And expose the metadata, so Azure AD B2C can read the metadata. Look at your relying party application’s documentation for guidance on how to do so. You need your relying party applications' metadata URL or XML document to set in Azure AD B2C policy.
+Each SAML relying party application has different steps to set and read the identity provider metadata. Azure AD B2C can read the service providers metadata. Look at your relying party application’s documentation for guidance on how to do so. You need your relying party applications' metadata URL or XML document to set in Azure AD B2C relying party policy file.
 
-Following is an example of dynamic metadata. Update the &lt;Item&gt; with Key="PartnerEntity" by adding the URL of the SAML RP’s metadata, if such exists:
+The following is an example of dynamic metadata. Update the &lt;Item&gt; with Key="PartnerEntity" by adding the URL of the SAML RP’s metadata, if such exists:
 
 ```XML
 <Item Key="PartnerEntity">https://app.com/metadata</Item>
 ```
 
-> Note: the SP metadata should be publicly available. If your app is running under https://localhost, copy and upload the metadata file to an anonymous web server.
+> Note: the Service Provider metadata should be publicly available. If your app is running under https://localhost, copy and upload the metadata file to an anonymous web server.
 
 Following is an example of static metadata. Update the &lt;Item&gt; with Key="PartnerEntity" by adding the XML of the SAML RP’s metadata inside the `![CDATA[]]`:
 
@@ -244,7 +246,7 @@ provide some or all the following data points:
 
 -   **Certificate:**
 
-    This is the B2C_1A_SamlRpCert, but without the private key. To get the public key of the certificate do the following:
+    This is the B2C_1A_YourAppNameSamlCert, but without the private key. To get the public key of the certificate do the following:
 
 1.  Go to the metadata URL specified above.
 1.  Copy the value in the &lt;X509Certificate&gt; element
