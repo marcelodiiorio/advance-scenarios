@@ -253,6 +253,15 @@ provide some or all the following data points:
 1.  Paste it into a text file
 1.  Save the text file as a .cer file
 
+## Solution artifacts 
+- [TrustFrameworkExtensions.xml]()  The extensions policy file - holds the technical profile that issues a SAML token, SAML session management and the *SignUpSignInSAML* user journey.
+- [SignUpOrSigninSAML.xml](SignUpOrSigninSAML.xml) the relying party policy containing the SAML metadata configuration. Output claims and a reference to the *SignUpSignInSAML*user journey 
+
+
+## More samples
+  - [Java Spring Security SAML based application](https://github.com/yoelhor/aad-b2c-spring-security-saml)
+
+
  ## (Optional) Enable Debugging in your User Journey(s)
 ----------------------------------------------------
 
