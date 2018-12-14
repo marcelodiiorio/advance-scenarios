@@ -262,7 +262,7 @@ provide some or all the following data points:
 <table border="0" style="border:none;">
     <tr style="border: none;">
         <td style="padding-left:0; border: none;"><a href="https://github.com/UNIFYSolutions/Azure-B2C" ><img src="https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg" height="48px" width="48px" alt=".Net Core" ><br /><span>.Net Framework</span></a></div></td>
-        <td style="padding-left:20px; border: none;"><a href="https://github.com/yoelhor/aadb2c-advance-scenarios/blob/master/policies/saml-relying-parts/Source-code/node-js-express" ><img src="https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg" height="48px" width="48px" alt="Node.js" ><br /?<span>Node.js</span></a></div></td>
+        <td style="padding-left:20px; border: none;"><a href="https://github.com/yoelhor/advance-scenarios/tree/master/policies/saml-relying-party/source-code/node-js-express" ><img src="https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg" height="48px" width="48px" alt="Node.js" ><br /?<span>Node.js</span></a></div></td>
         <td style="padding-left:20px; border: none;"><a href="https://github.com/yoelhor/aad-b2c-spring-security-saml" ><img src="https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg" height="48px" width="48px" alt="Java" ><br /><span>Java</span></a></div></td>
     </tr>
 </table>
