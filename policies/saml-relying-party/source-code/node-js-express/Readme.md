@@ -67,7 +67,7 @@ This solution demonstrates how to integrate [Node.js](https://nodejs.org/en/) [e
 
 ## 2. Secure your application with Azure AD B2C using SAML protocol
 
-Replace the entire content of the index.js you created with the sample [index.js] file.
+Replace the entire content of the index.js you created with the sample [index.js](index.js) file.
 
 ### 2.1 Configure the service provider metadata
 Metadata is an information used in the SAML protocol to expose the configuration of a SAML party, like an SP (service provider) and IdP (identity provider). Metadata defines the location of the services, such as sign-in and sign-out, certificates, sign-in method and more. The identity provider uses the metadata to know how to communicate with the service provider (relying party application) and vice versa. The metadata is configured in XML format, and may be signed with digital signature, so the other party can validate the integrity of the metadata.
