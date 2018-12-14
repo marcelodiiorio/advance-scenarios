@@ -1,7 +1,7 @@
 # Configure SAML Relying party application 
 
 This document will walk you through adding a SAML-based Relying party
-to Azure AD B2C.
+to Azure AD B2C. The [SAML RP Reference document](saml-rp-spec.md) contains more details around each of the XML elements referenced in this article.
 
 ## Important note
 **SAML Relying Party support is available as a preview feature.** Support is not available for the general public on this functionality as it has only been tested on some specific modalities. The implementation may be changed in the future without notifying you. Customers should NOT use preview features in a production environment.
