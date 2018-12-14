@@ -176,7 +176,7 @@ The following is an example of dynamic metadata. Update the &lt;Item&gt; with Ke
 
 > Note: the Service Provider metadata should be publicly available. If your app is running under https://localhost, copy and upload the metadata file to an anonymous web server.
 
-Following is an example of static metadata. Update the &lt;Item&gt; with Key="PartnerEntity" by adding the XML of the SAML RP’s metadata inside the `![CDATA[]]`:
+Following is an example of static metadata. Update the &lt;Item&gt; with Key="PartnerEntity" by adding the XML of the SAML RP’s metadata inside the `<![CDATA[Put your metadata here]]>`:
 
 ```XML
 <Item Key="PartnerEntity"><![CDATA[
