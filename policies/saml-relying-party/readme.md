@@ -269,7 +269,6 @@ provide some or all the following data points:
 </table>
 
  ## (Optional) Enable Debugging in your User Journey(s)
-----------------------------------------------------
 
 You can enable Application Insights to help you follow through each of the orchestration steps in the UserJourney and get details on issues that occur. This should only be enabled during development. For more information, see [Azure Active Directory B2C: Collecting Logs](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-troubleshoot-custom.)
 
