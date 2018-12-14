@@ -225,7 +225,6 @@ https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/m
 
 
 ## 4. Setup the SAML IdP in the App / SAML RP
----------------------------------------
 
 You’ll need to setup B2C as a SAML IdP in the SAML RP / application.
 Each application has different steps to do so, look at your app’s
