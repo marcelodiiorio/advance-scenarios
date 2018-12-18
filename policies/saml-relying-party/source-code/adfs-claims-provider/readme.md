@@ -108,7 +108,7 @@ To add a new claims provider trust, using the AD FS Management snap-in, by autom
       => issue(claim = c);
     ``` 
 
-    ![create rule](media/adfs-claims-provider-setup4.png)     
+    ![create rule](media/adfs-claims-provider-setup6.png)     
 
 1.  Click **Finish**.  
   
