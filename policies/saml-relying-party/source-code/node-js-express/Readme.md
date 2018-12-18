@@ -1,6 +1,8 @@
 # Securing a Node.js express web application with  Azure AD B2C using SAML 2.0 protocol
 
-This solution demonstrates how to integrate [Node.js](https://nodejs.org/en/) [express](https://expressjs.com/) application with Azure AD B2C, using SAML protocol. The solution is based on the [saml2-js package](https://www.npmjs.com/package/saml2-js).
+This solution demonstrates how to integrate [Node.js](https://nodejs.org/en/) [express](https://expressjs.com/) application with Azure AD B2C, using SAML protocol. The solution is based on the [saml2-js package](https://www.npmjs.com/package/saml2-js). 
+
+> Read the [Configure SAML Relying party application](../../) before you configure your relying party application.
 
 ## 1. Setup Node.js project
 1. Installed [Node.js](https://nodejs.org/). If you aleardy install Node.js move to the next step
