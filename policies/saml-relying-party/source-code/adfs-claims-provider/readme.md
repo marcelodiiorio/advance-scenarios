@@ -1,5 +1,8 @@
 # Adding Azure AD B2C as Claims provider to ADFS
 
+## Important note
+This solution is based on Azure AD B2C SAML relying party policy. **SAML Relying Party support is available as a preview feature.** Support is not available for the general public on this functionality as it has only been tested on some specific modalities. The implementation may be changed in the future without notifying you. Customers should NOT use preview features in a production environment.
+
 ## Introduction 
 In the AD FS Management snap-in, *Claims Provider Trusts* are trust between your organization with any partner identity provider, that represents an organization user/identity store. For example, your organization **Contoso** is a partner with **Fabrikam**. So, you want to allow Fabrikam employees to access one of your relying party applications. To do so, you build a *Claims Provider Trust* between your AD-FS and Fabrikam identity provider. After your build the *Claims Provider Trust*, users from Fabrikam can sign-in with their Fabrikam account into your application. This document guides you how to build a *Claims Provider Trust* with your Azure AD B2C tenant (over SAML protocol).
 

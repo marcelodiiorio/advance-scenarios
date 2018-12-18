@@ -4,6 +4,9 @@ This solution demonstrates how to integrate [Node.js](https://nodejs.org/en/) [e
 
 > Read the [Configure SAML Relying party application](../../) before you configure your relying party application.
 
+## Important note
+This solution is based on Azure AD B2C SAML relying party policy. **SAML Relying Party support is available as a preview feature.** Support is not available for the general public on this functionality as it has only been tested on some specific modalities. The implementation may be changed in the future without notifying you. Customers should NOT use preview features in a production environment.
+
 ## 1. Setup Node.js project
 1. Installed [Node.js](https://nodejs.org/). If you aleardy install Node.js move to the next step
 
