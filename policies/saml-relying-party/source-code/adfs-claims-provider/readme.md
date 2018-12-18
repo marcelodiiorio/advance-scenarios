@@ -23,6 +23,9 @@ To build the *Claims Provider Trust* between AD-FS and Azure AD B2C, you need:
 - Exchange SAML metadata with AD-FS. Metadata is an information used in the SAML protocol to expose the configuration of a SAML party, like an SP (service provider) and IdP (identity provider). Metadata defines the location of the services, such as sign-in and sign-out, certificates, sign-in method and more. The identity provider uses the metadata to know how to communicate with the service provider (relying party application) and vice versa. The metadata is configured in XML format, and may be signed with digital signature, so the other party can validate the integrity of the metadata.
 
 ## 1. Create Azure AD B2C RP policy
+
+> Read the [Configure SAML Relying party application](../../) before you configure your AD-FS trusted claims provider.
+
 Follow the steps [how to create a custom SAML RP policy](../../).  In step #3 **PartnerEntity** to AD-FS's metadata URI. 
 
 AD-FS metadata contains the SAML Identity provider metadata. Also the SAML Service provider metadata. So, you can point Azure AD SAML RP policy to the AD-FS metadata. Azure AD B2C reads the service provider metadata, and ignores the identity provider metadata.
