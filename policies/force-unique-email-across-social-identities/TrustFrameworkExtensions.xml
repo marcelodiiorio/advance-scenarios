@@ -269,7 +269,7 @@
             </Precondition>
           </Preconditions>
           <ClaimsExchanges>
-            <ClaimsExchange Id="AAD-UserReadUsingOtherMails-NoError" TechnicalProfileReferenceId="AAD-UserReadUsingOtherMails-NoError" />
+            <ClaimsExchange Id="AAD-UserReadUsingSocialEmail-NoError" TechnicalProfileReferenceId="AAD-UserReadUsingSocialEmail-NoError" />
           </ClaimsExchanges>
         </OrchestrationStep> -->
     
