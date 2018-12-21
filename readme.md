@@ -27,3 +27,5 @@ Samples for several Azure AD B2C advance scenarios
 - [TOTP multi-factor authentication](policies/custom-mfa-totp) - Custom MFA solution, based on TOTP code. Allowing users to sign-in with Microsoft or Google authenticator apps.
 
 - [Remote profile](policies/remote-profile) - Demonstrates how to store and read user profile in a remote database. 
+
+- [Sign-in with social identity provider and force email uniqueness](policies/force-unique-email-across-social-identities ) - Demonstrates how to force a social account user to provide and validate email address, and also checks there is no other account with the same email address.
