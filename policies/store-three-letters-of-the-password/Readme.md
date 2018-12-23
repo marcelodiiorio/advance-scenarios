@@ -9,7 +9,7 @@ The **LocalAccountSignUpWithLogonEmail** and **LocalAccountWritePasswordUsingObj
 
 The validation technical profile sends the **newPassword** claim to the REST API. The REST API extracts the first three characters of the password, the second three characters, and the third three characters, then HASH the values extraced and returns them back to Azure AD B2C.
 
-## Prepare you policy
+## Prepare the policy
 1. Find and replace the `tenant-name` with your own tenant name
 1. In `login-NonInteractive` technical profile, set the value of `client_id` and `resource_id` input claims, with your **ProxyIdentityExperienceFramework** application Id. For more information, see [Get started with custom policies in Azure Active Directory B2C](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-get-started-custom#register-applications)
 1. In `AAD-Common` technical profile, Insert objectId and appId here. For more information, see [Use custom attributes in a custom profile edit policy](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-create-custom-attributes-profile-edit-custom)
