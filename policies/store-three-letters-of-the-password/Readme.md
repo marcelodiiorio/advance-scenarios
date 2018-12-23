@@ -16,7 +16,7 @@ The validation technical profile sends the **newPassword** claim to the REST API
 1. Deploy the REST API to a public web server, and change the `ServiceUrl` metadata of the `REST-HashPassword` technical profile
 
 ## Source code
-The custom REST API source code for .Net core in under the [source code folder](/source-code/dot-net-core)
+The custom REST API source code for .Net core in under the [source code folder](source-code/dot-net-core)
 
 ## Custom policy
 This sample policy is based on [SocialAndLocalAccounts starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts). All changes are marked with **Demo:** comment inside the policy XML files. Make the nessacery changes in the **Demo action required** sections.
