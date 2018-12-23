@@ -1,6 +1,6 @@
 # HASH three characters of the password 
 
-A Customer’s call center uses Azure AD B2C to validate a customer phoning in. To do this call center takes three characters from the password and ask the customer calling in to provide the three characters plus some other known facts as part of the authentication process.  
+A call center uses Azure AD B2C to validate a customer phoning in. To do this call center takes three characters from the password and ask the customer calling in to provide the three characters plus some other known facts as part of the authentication process.  
 
 With the Identity Experience Framework, which underlies Azure Active Directory B2C (Azure AD B2C) custom policy, you can integrate with a RESTful API in a user journey. This sample .Net core web API, demonstrate how to extract the three characters of the password, by calling [Restful technical profile](https://docs.microsoft.com/en-us/azure/active-directory-b2c/restful-technical-profile) in  a [validation technical profile](https://docs.microsoft.com/en-us/azure/active-directory-b2c/validation-technical-profile). During sign-up or password reset, the policy calls a REST API to HASH three letters of the password and store the values in the user profile. 
 
