@@ -114,3 +114,8 @@ For example:
 4) Open the user's mailbox and click on the **Confirm account** link
 5) Provide your password and user profile and click continue
 6) If you use MFA, verify your phone number and click continue
+
+
+## Test your policy
+1. Try to send an invite and make user the user is created in the directory
+1. Try to run the policy without invitation, make sure B2C presents the unsolicited error message
