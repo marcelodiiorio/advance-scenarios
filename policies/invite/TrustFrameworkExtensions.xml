@@ -41,7 +41,7 @@
           <OutputClaim ClaimTypeReferenceId="Unsolicited" TransformationClaimType="createdClaim" />
         </OutputClaims>
       </ClaimsTransformation>
-    <ClaimsTransformations>
+    </ClaimsTransformations>
   </BuildingBlocks>
   <ClaimsProviders>
 
@@ -51,7 +51,7 @@
           <TechnicalProfiles>
             <TechnicalProfile Id="login-NonInteractive">
               <InputClaims>
-                <!--Demo action required: Change to your IdentityExperienceFramework App Id-->
+                <!--Demo action required: Change to your ProxyIdentityExperienceFramework App Id-->
                 <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="00000000-0000-0000-0000-000000000000" />
                 <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="00000000-0000-0000-0000-000000000000" />
               </InputClaims>
@@ -118,6 +118,7 @@
   <ClaimsProvider>
     <DisplayName>Self Asserted</DisplayName>
     <TechnicalProfiles>
+      <!-- Demo: Show unsolicited error message-->
       <TechnicalProfile Id="SelfAsserted-Unsolicited">
           <DisplayName>Unsolicited error message</DisplayName>
           <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
@@ -128,8 +129,11 @@
             <Item Key="setting.showContinueButton">false</Item>
          </Metadata>
           <InputClaimsTransformations>
-            <OutputClaimsTransformation ReferenceId="CreateUnsolicitedErrorMessage" />
+            <InputClaimsTransformation ReferenceId="CreateUnsolicitedErrorMessage" />
           </InputClaimsTransformations>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="Unsolicited"/>
+          </InputClaims>
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="Unsolicited"/>
           </OutputClaims>
@@ -196,8 +200,22 @@
     <UserJourney Id="InviteSignUpWithMFA">
       <OrchestrationSteps>
 
-        <!-- Demo: Self-asserted sign-up page -->
+
+        <!-- Demo: Check if user tries to run the policy without invitation -->
         <OrchestrationStep Order="1" Type="ClaimsExchange">
+         <Preconditions>
+            <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+              <Value>ReadOnlyEmail</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>        
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SelfAsserted-Unsolicited" TechnicalProfileReferenceId="SelfAsserted-Unsolicited" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+
+        <!-- Demo: Self-asserted sign-up page -->
+        <OrchestrationStep Order="2" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
           </ClaimsExchanges>
@@ -205,21 +223,21 @@
 
         <!-- This step reads any user attributes that we may not have received when authenticating using ESTS so they can be sent 
           in the token. -->
-        <OrchestrationStep Order="2" Type="ClaimsExchange">
+        <OrchestrationStep Order="3" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
           </ClaimsExchanges>
         </OrchestrationStep>
 
         <!-- Demo: Challenge the user to verify the phone number. -->
-        <OrchestrationStep Order="3" Type="ClaimsExchange">
+        <OrchestrationStep Order="4" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="PhoneFactor-Verify" TechnicalProfileReferenceId="PhoneFactor-InputOrVerify" />
           </ClaimsExchanges>
         </OrchestrationStep>
 
         <!-- Demo: Store the phone number in the directory for future authentication requests. -->
-        <OrchestrationStep Order="4" Type="ClaimsExchange">
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="AADUserWriteWithObjectId" TechnicalProfileReferenceId="AAD-UserWriteInvitePhoneNumberUsingObjectId" />
           </ClaimsExchanges>
