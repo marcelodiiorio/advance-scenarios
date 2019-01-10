@@ -23,7 +23,25 @@
       </ClaimType>
       <!-- /Demo-->
       
+       <ClaimType Id="Unsolicited">
+      	<DisplayName>Error</DisplayName>
+      	<DataType>string</DataType>
+        <UserHelpText>Add help text here</UserHelpText>
+      	<UserInputType>Paragraph</UserInputType>
+      </ClaimType>
+
     </ClaimsSchema>
+
+    <ClaimsTransformations>
+      <ClaimsTransformation Id="CreateUnsolicitedErrorMessage" TransformationMethod="CreateStringClaim">
+        <InputParameters>
+          <InputParameter Id="value" DataType="string" Value="You cannot run this policy" />
+        </InputParameters>
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="Unsolicited" TransformationClaimType="createdClaim" />
+        </OutputClaims>
+      </ClaimsTransformation>
+    <ClaimsTransformations>
   </BuildingBlocks>
   <ClaimsProviders>
 
@@ -97,6 +115,25 @@
       </TechnicalProfiles>
     </ClaimsProvider>
 
+  <ClaimsProvider>
+    <DisplayName>Self Asserted</DisplayName>
+    <TechnicalProfiles>
+      <TechnicalProfile Id="SelfAsserted-Unsolicited">
+          <DisplayName>Unsolicited error message</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+          <Metadata>
+            <Item Key="ContentDefinitionReferenceId">api.selfasserted</Item>
+          </Metadata>
+          <InputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateUnsolicitedErrorMessage" />
+          </InputClaimsTransformations>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="Unsolicited"/>
+          </OutputClaims>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+
     <!-- Facebook claims provider -->
 	<ClaimsProvider>
       <DisplayName>Facebook</DisplayName>
@@ -119,8 +156,15 @@
     <UserJourney Id="InviteSignUp">
       <OrchestrationSteps>
 
-        <!-- Demo: Self-asserted sign-up page -->
+        <!-- Demo: Check if user tries to run the policy without invitation -->
         <OrchestrationStep Order="1" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SelfAsserted-Unsolicited" TechnicalProfileReferenceId="SelfAsserted-Unsolicited" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+
+        <!-- Demo: Self-asserted sign-up page -->
+        <OrchestrationStep Order="2" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
           </ClaimsExchanges>
@@ -128,13 +172,13 @@
 
         <!-- This step reads any user attributes that we may not have received when authenticating using ESTS so they can be sent 
           in the token. -->
-        <OrchestrationStep Order="2" Type="ClaimsExchange">
+        <OrchestrationStep Order="3" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="3" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
 
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
