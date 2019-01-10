@@ -158,6 +158,12 @@
 
         <!-- Demo: Check if user tries to run the policy without invitation -->
         <OrchestrationStep Order="1" Type="ClaimsExchange">
+         <Preconditions>
+            <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+              <Value>ReadOnlyEmail</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>        
           <ClaimsExchanges>
             <ClaimsExchange Id="SelfAsserted-Unsolicited" TechnicalProfileReferenceId="SelfAsserted-Unsolicited" />
           </ClaimsExchanges>
