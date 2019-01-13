@@ -1,6 +1,6 @@
 const port = 3000
-var app = express();
 var express = require('express');
+var app = express();
 var bodyParser = require('body-parser');
 var saml2 = require('saml2-js');
 var fs = require('fs');
