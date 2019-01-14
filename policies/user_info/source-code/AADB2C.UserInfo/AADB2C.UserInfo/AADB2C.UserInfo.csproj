@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <None Include="wwwroot\.well-known\openid-configuration" />
-    <None Include="wwwroot\.well-known\openid-configuration.js" />
   </ItemGroup>
 
 </Project>
